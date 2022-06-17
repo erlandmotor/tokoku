@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.teratesejahtera">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="teratesejahtera"
+        android:label="Terate Sejahtera"
         android:name="${applicationName}"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">

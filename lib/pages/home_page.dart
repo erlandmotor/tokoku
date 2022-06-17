@@ -78,6 +78,8 @@ class WebViewExample extends StatefulWidget {
 }
 
 class _WebViewExampleState extends State<WebViewExample> {
+  bool isLoading = true;
+
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
 
@@ -93,14 +95,28 @@ class _WebViewExampleState extends State<WebViewExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: WebView(
-          initialUrl: 'http://www.teratesejahtera.com/',
-          javascriptMode: JavascriptMode.unrestricted,
-          onWebViewCreated: (WebViewController webViewController) {
-            _controller.complete(webViewController);
-          },
-          gestureNavigationEnabled: true,
-          backgroundColor: const Color(0x00000000),
+        child: Stack(
+          children: [
+            WebView(
+              initialUrl: 'http://www.teratesejahtera.com/',
+              javascriptMode: JavascriptMode.unrestricted,
+              onWebViewCreated: (WebViewController webViewController) {
+                _controller.complete(webViewController);
+              },
+              gestureNavigationEnabled: true,
+              backgroundColor: const Color(0x00000000),
+              onPageFinished: (finish) {
+                setState(() {
+                  isLoading = false;
+                });
+              },
+            ),
+            isLoading
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Stack(),
+          ],
         ),
       ),
     );
