@@ -94,7 +94,7 @@ class _WebViewExampleState extends State<WebViewExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Terate Sejahtera'),
+        title: const Text('Toko RootSec Bot'),
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
         actions: <Widget>[
           NavigationControls(_completerController.future),
@@ -104,7 +104,7 @@ class _WebViewExampleState extends State<WebViewExample> {
         child: Stack(
           children: [
             WebView(
-              initialUrl: 'https://ppob.teratesejahtera.com/',
+              initialUrl: 'https://toko.rootsec.biz.id/',
               javascriptMode: JavascriptMode.unrestricted,
               onWebViewCreated: (WebViewController webViewController) async {
                 _completerController.complete(webViewController);
